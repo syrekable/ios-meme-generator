@@ -14,6 +14,8 @@
 		F19005A228B3B6C2008778CB /* Random_Meme_GeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005A128B3B6C2008778CB /* Random_Meme_GeneratorTests.swift */; };
 		F19005AC28B3B6C2008778CB /* Random_Meme_GeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005AB28B3B6C2008778CB /* Random_Meme_GeneratorUITests.swift */; };
 		F19005AE28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005AD28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift */; };
+		F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BD28B3D06F008778CB /* MemeFetcher.swift */; };
+		F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BF28B3D111008778CB /* MemeAPIService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		F19005A728B3B6C2008778CB /* Random Meme GeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Random Meme GeneratorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19005AB28B3B6C2008778CB /* Random_Meme_GeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_Meme_GeneratorUITests.swift; sourceTree = "<group>"; };
 		F19005AD28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_Meme_GeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F19005BD28B3D06F008778CB /* MemeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeFetcher.swift; sourceTree = "<group>"; };
+		F19005BF28B3D111008778CB /* MemeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeAPIService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +144,8 @@
 		F19005BB28B3B77A008778CB /* networking */ = {
 			isa = PBXGroup;
 			children = (
+				F19005BD28B3D06F008778CB /* MemeFetcher.swift */,
+				F19005BF28B3D111008778CB /* MemeAPIService.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F190059328B3B6C1008778CB /* ContentView.swift in Sources */,
+				F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */,
+				F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */,
 				F190059128B3B6C1008778CB /* Random_Meme_GeneratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

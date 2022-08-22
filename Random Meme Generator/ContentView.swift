@@ -8,27 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    let imageIDs: [String] = ["Sad-Keanu", "Forever-Alone"]
-    @State private var currentImageID = "Sad-Keanu"
+    @StateObject var memeFetcher = MemeFetcher()
+    @State private var currentImageID: String = ""
+    
     var body: some View {
         VStack {
-            List {
+            HStack {
+                Text("Select meme base")
+                    .font(.caption)
                 Picker("Meme base:", selection: $currentImageID) {
-                    ForEach(imageIDs, id: \.self) { id in
+                    ForEach(memeFetcher.imageIDs, id: \.self) { id in
                         Text(id)
                     }
                 }
+                .frame(width: 150)
             }
             AsyncImage(url: URL(string: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgur.com%2FIFeHHse.jpg&f=1&nofb=1"), scale: 1) { phase in
                 if let image = phase.image {
                     image
                         .resizable()
+                        .frame(height: 400)
                 } else if phase.error != nil {
                     Color.red // Indicates an error.
                 } else {
-                    Color.orange // Acts as a placeholder.
+                    ProgressView()
+                        .frame(width: 200, height: 400)
+                     // Acts as a placeholder.
                 }
             }
+            .padding(.vertical, 5)
             Button("Generate meme") {
                 print("Generating...")
             }
@@ -37,6 +45,9 @@ struct ContentView: View {
             .border(.orange)
         }
         .padding()
+        .onChange(of: memeFetcher.imageIDs) { newValue in
+            currentImageID = newValue[0]
+        }
     }
 }
 
