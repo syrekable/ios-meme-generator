@@ -17,6 +17,7 @@
 		F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BD28B3D06F008778CB /* MemeFetcher.swift */; };
 		F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BF28B3D111008778CB /* MemeAPIService.swift */; };
 		F19005C228B3D9D5008778CB /* RequiredParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005C128B3D9D5008778CB /* RequiredParameters.swift */; };
+		F19005C528B3DE0A008778CB /* MemeTemplatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005C428B3DE0A008778CB /* MemeTemplatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		F19005BD28B3D06F008778CB /* MemeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeFetcher.swift; sourceTree = "<group>"; };
 		F19005BF28B3D111008778CB /* MemeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeAPIService.swift; sourceTree = "<group>"; };
 		F19005C128B3D9D5008778CB /* RequiredParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredParameters.swift; sourceTree = "<group>"; };
+		F19005C428B3DE0A008778CB /* MemeTemplatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTemplatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		F19005BA28B3B76A008778CB /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F19005C428B3DE0A008778CB /* MemeTemplatePicker.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F190059328B3B6C1008778CB /* ContentView.swift in Sources */,
+				F19005C528B3DE0A008778CB /* MemeTemplatePicker.swift in Sources */,
 				F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */,
 				F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */,
 				F19005C228B3D9D5008778CB /* RequiredParameters.swift in Sources */,

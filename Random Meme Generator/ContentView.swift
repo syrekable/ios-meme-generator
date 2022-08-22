@@ -9,25 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var memeFetcher = MemeFetcher()
-    @State private var currentImageID: String = ""
+    @State var currentImageID: String = ""
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Select meme base")
-                    .font(.caption)
-                Picker("Meme base:", selection: $currentImageID) {
-                    ForEach(memeFetcher.imageIDs, id: \.self) { id in
-                        Text(id)
-                    }
-                }
-                .frame(width: 150)
-            }
+            MemeTemplatePicker(currentImageID: $currentImageID, imageIDs: memeFetcher.imageIDs, reloadAction: memeFetcher.fetchImageIDs)
             
             VStack {
                 if let image = memeFetcher.baseImage {
                     Image(uiImage: image)
-                        .resizable(resizingMode: .stretch)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        
                 } else {
                     ProgressView()
                 }
@@ -53,6 +46,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView( currentImageID: "Sad-Keanu")
     }
 }
