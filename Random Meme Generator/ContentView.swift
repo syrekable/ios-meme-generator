@@ -46,7 +46,8 @@ struct ContentView: View {
             }
             .onChange(of: currentImageID) { newValue in
                 memeFetcher.fetchBaseImage(imageID: newValue)
-                memeEditor.templateID = newValue
+                memeEditor.clean()
+                memeEditor.changeTemplate(to: newValue)
             }
             .onChange(of: memeFetcher.generatedMeme) { newValue in
                 guard newValue != nil else {
@@ -55,8 +56,18 @@ struct ContentView: View {
                 isMemePresented = true
             }
         }
-        .sheet(isPresented: $isMemePresented) {
-            Image(uiImage: memeFetcher.generatedMeme!)
+        .sheet(isPresented: $isMemePresented, onDismiss: {
+            isMemePresented = false
+            memeEditor.clean()
+            memeFetcher.fetchImageIDs()
+        }) {
+            VStack {
+                Text("That's your meme! Screenshot it or smth")
+                Image(uiImage: memeFetcher.generatedMeme!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            .padding()
         }
         
     }

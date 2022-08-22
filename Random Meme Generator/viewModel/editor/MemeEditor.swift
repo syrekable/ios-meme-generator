@@ -12,6 +12,15 @@ class MemeEditor: ObservableObject {
     @Published var bottomText: String = ""
     @Published var templateID: String = ""
     
+    func clean() {
+        topText = ""
+        bottomText = ""
+    }
+    
+    func changeTemplate(to imageID: String) {
+        templateID = imageID
+    }
+    
     var toRequiredParameters: RequiredParameters {
         get {
             return RequiredParameters(top: topText, bottom: bottomText, meme: templateID)
