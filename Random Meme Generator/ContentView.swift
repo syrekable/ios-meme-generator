@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var memeFetcher = MemeFetcher()
+    @StateObject var memeEditor: MemeEditor = MemeEditor()
     @State var currentImageID: String = ""
     
     var body: some View {
@@ -22,9 +23,8 @@ struct ContentView: View {
                 VStack {
                     if let image = memeFetcher.baseImage {
                         if !memeFetcher.isLoading {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                            MemeGeneratorScreen(image: image)
+                                .environmentObject(memeEditor)
                         }
                     } else {
                         ProgressView()
