@@ -11,4 +11,10 @@ class MemeEditor: ObservableObject {
     @Published var topText: String = ""
     @Published var bottomText: String = ""
     @Published var templateID: String = ""
+    
+    var toRequiredParameters: RequiredParameters {
+        get {
+            return RequiredParameters(top: topText, bottom: bottomText, meme: templateID)
+        }
+    }
 }

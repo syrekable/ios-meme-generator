@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var memeFetcher = MemeFetcher()
     @StateObject var memeEditor: MemeEditor = MemeEditor()
-    @State var currentImageID: String = ""
+    @State private var currentImageID: String = ""
+    @State private var isMemePresented: Bool = false
     
     var body: some View {
         ScrollView {
@@ -33,7 +34,7 @@ struct ContentView: View {
                     .frame(height: 400)
                 
                 Button("Generate meme") {
-                    print("Generating...")
+                    memeFetcher.generateMeme(with: memeEditor.toRequiredParameters)
                 }
                     .padding(10)
                     .foregroundColor(.orange)
@@ -45,7 +46,17 @@ struct ContentView: View {
             }
             .onChange(of: currentImageID) { newValue in
                 memeFetcher.fetchBaseImage(imageID: newValue)
+                memeEditor.templateID = newValue
             }
+            .onChange(of: memeFetcher.generatedMeme) { newValue in
+                guard newValue != nil else {
+                    fatalError("Generated meme is nil.")
+                }
+                isMemePresented = true
+            }
+        }
+        .sheet(isPresented: $isMemePresented) {
+            Image(uiImage: memeFetcher.generatedMeme!)
         }
         
     }

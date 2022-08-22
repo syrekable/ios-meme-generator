@@ -12,6 +12,7 @@ class MemeFetcher: ObservableObject {
     var service: MemeAPIService
     @Published var imageIDs: [String] = [String]()
     @Published var baseImage: UIImage?
+    @Published var generatedMeme: UIImage?
     @Published var isLoading: Bool = false
     
     /// Picks 10 random elements from a collection. It usually actually works for `elements.count >= 100`.
@@ -28,6 +29,7 @@ class MemeFetcher: ObservableObject {
         fetchImageIDs()
     }
     
+    // TODO: clean it up
     func fetchImageIDs() {
         isLoading = true
         let imagesURL = service.createURLFor(endpoint: .images)
@@ -77,5 +79,24 @@ class MemeFetcher: ObservableObject {
         }
         
         getEmptyMemeTask.resume()
+    }
+    
+    func generateMeme(with parameters: RequiredParameters) {
+        isLoading = true
+        let memesURL = service.createURLFor(endpoint: .meme, with: parameters)
+        let memesRequest = service.createRequestWithAuthHeaders(for: memesURL)
+        
+        let generateMeme = URLSession.shared.dataTask(with: memesRequest!) { data, _, _ in
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.generatedMeme = UIImage(data: data)
+                }
+            }
+        }
+        
+        generateMeme.resume()
     }
 }

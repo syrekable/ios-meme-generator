@@ -19,7 +19,7 @@ struct MemeGeneratorScreen: View {
                 VStack {
                     TextField("Top text", text: $memeEditor.topText)
                     Spacer()
-                    TextField("Bottom text", text: $memeEditor.topText)
+                    TextField("Bottom text", text: $memeEditor.bottomText)
                 }
                     .padding()
             }
