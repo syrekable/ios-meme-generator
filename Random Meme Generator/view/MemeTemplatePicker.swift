@@ -11,6 +11,7 @@ struct MemeTemplatePicker: View {
     @Binding var currentImageID: String
     let imageIDs: [String]
     let reloadAction: () -> Void
+    let isLoading: Bool
     
     var body: some View {
         HStack {
@@ -20,13 +21,18 @@ struct MemeTemplatePicker: View {
                     Spacer()
                 }
                 HStack {
-                    Picker("Meme base:", selection: $currentImageID) {
-                        ForEach(imageIDs, id: \.self) { id in
-                            Text(id.replacingOccurrences(of: "-", with: " "))
+                    if !isLoading {
+                        Picker("Meme base:", selection: $currentImageID) {
+                            ForEach(imageIDs, id: \.self) { id in
+                                Text(id.replacingOccurrences(of: "-", with: " "))
+                            }
+                            
                         }
-                        
+                            .pickerStyle(.menu)
+                    } else {
+                        ProgressView()
                     }
-                        .pickerStyle(.menu)
+                    
                     Spacer()
                     Button(action: reloadAction) {
                         Label("Roll again", systemImage: "dice")
@@ -40,7 +46,7 @@ struct MemeTemplatePicker: View {
 
 struct MemeTemplatePicker_Previews: PreviewProvider {
     static var previews: some View {
-        MemeTemplatePicker(currentImageID: .constant("Sad-Keanu"), imageIDs: ["Sad-Keanu", "High-Dog"], reloadAction: {})
+        MemeTemplatePicker(currentImageID: .constant("Sad-Keanu"), imageIDs: ["Sad-Keanu", "High-Dog"], reloadAction: {}, isLoading: true)
             .previewLayout(.fixed(width: 400, height: 200))
     }
 }

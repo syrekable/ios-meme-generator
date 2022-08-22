@@ -13,14 +13,18 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            MemeTemplatePicker(currentImageID: $currentImageID, imageIDs: memeFetcher.imageIDs, reloadAction: memeFetcher.fetchImageIDs)
+            MemeTemplatePicker(currentImageID: $currentImageID,
+                               imageIDs: memeFetcher.imageIDs,
+                               reloadAction: memeFetcher.fetchImageIDs
+                               , isLoading: memeFetcher.isLoading)
             
             VStack {
                 if let image = memeFetcher.baseImage {
-                    Image(uiImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        
+                    if !memeFetcher.isLoading {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
                 } else {
                     ProgressView()
                 }
@@ -34,7 +38,7 @@ struct ContentView: View {
             .foregroundColor(.orange)
             .border(.orange)
         }
-        .padding()
+            .padding()
         .onChange(of: memeFetcher.imageIDs) { newValue in
             currentImageID = newValue[0]
         }
@@ -46,6 +50,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView( currentImageID: "Sad-Keanu")
+        ContentView()
     }
 }
