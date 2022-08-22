@@ -23,20 +23,17 @@ struct ContentView: View {
                 }
                 .frame(width: 150)
             }
-            AsyncImage(url: URL(string: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgur.com%2FIFeHHse.jpg&f=1&nofb=1"), scale: 1) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                        .frame(height: 400)
-                } else if phase.error != nil {
-                    Color.red // Indicates an error.
+            
+            VStack {
+                if let image = memeFetcher.baseImage {
+                    Image(uiImage: image)
+                        .resizable(resizingMode: .stretch)
                 } else {
                     ProgressView()
-                        .frame(width: 200, height: 400)
-                     // Acts as a placeholder.
                 }
             }
-            .padding(.vertical, 5)
+                .frame(height: 400)
+            
             Button("Generate meme") {
                 print("Generating...")
             }
@@ -47,6 +44,9 @@ struct ContentView: View {
         .padding()
         .onChange(of: memeFetcher.imageIDs) { newValue in
             currentImageID = newValue[0]
+        }
+        .onChange(of: currentImageID) { newValue in
+            memeFetcher.fetchBaseImage(imageID: newValue)
         }
     }
 }

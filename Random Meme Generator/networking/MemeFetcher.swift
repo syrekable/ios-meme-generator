@@ -32,6 +32,7 @@ class MemeFetcher: ObservableObject {
         let imagesRequest = service.createRequestWithAuthHeaders(for: imagesURL)
 
         let getAvailableImagesTask = URLSession.shared.dataTask(with: imagesRequest!) { [unowned self] data, response, _ in
+
             if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
                 print("Something went wrong during image fetching. Response code: \(response.statusCode).")
                 return
@@ -40,7 +41,9 @@ class MemeFetcher: ObservableObject {
                 do {
                     let imageIDs = try JSONDecoder().decode([String].self, from: data)
                     // probably not the most efficient way of doing so
-                    self.imageIDs = self.pickTenRandomElements(of: imageIDs)
+                    DispatchQueue.main.async {
+                        self.imageIDs = self.pickTenRandomElements(of: imageIDs)
+                    }
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -49,5 +52,21 @@ class MemeFetcher: ObservableObject {
         }
 
         getAvailableImagesTask.resume()
+    }
+    
+    func fetchBaseImage(imageID: String) {
+        let emptyMemeParameters = RequiredParameters(top: "", bottom: "", meme: imageID)
+        let memesURL = service.createURLFor(endpoint: .meme, with: emptyMemeParameters)
+        let memesRequest = service.createRequestWithAuthHeaders(for: memesURL)
+        
+        let getEmptyMemeTask = URLSession.shared.dataTask(with: memesRequest!) { data, _, _ in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.baseImage = UIImage(data: data)
+                }
+            }
+        }
+        
+        getEmptyMemeTask.resume()
     }
 }

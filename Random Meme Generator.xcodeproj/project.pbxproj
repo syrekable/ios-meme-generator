@@ -16,6 +16,7 @@
 		F19005AE28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005AD28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift */; };
 		F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BD28B3D06F008778CB /* MemeFetcher.swift */; };
 		F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005BF28B3D111008778CB /* MemeAPIService.swift */; };
+		F19005C228B3D9D5008778CB /* RequiredParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19005C128B3D9D5008778CB /* RequiredParameters.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		F19005AD28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_Meme_GeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F19005BD28B3D06F008778CB /* MemeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeFetcher.swift; sourceTree = "<group>"; };
 		F19005BF28B3D111008778CB /* MemeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeAPIService.swift; sourceTree = "<group>"; };
+		F19005C128B3D9D5008778CB /* RequiredParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequiredParameters.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 		F19005BC28B3B7A0008778CB /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F19005C128B3D9D5008778CB /* RequiredParameters.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				F190059328B3B6C1008778CB /* ContentView.swift in Sources */,
 				F19005BE28B3D06F008778CB /* MemeFetcher.swift in Sources */,
 				F19005C028B3D111008778CB /* MemeAPIService.swift in Sources */,
+				F19005C228B3D9D5008778CB /* RequiredParameters.swift in Sources */,
 				F190059128B3B6C1008778CB /* Random_Meme_GeneratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

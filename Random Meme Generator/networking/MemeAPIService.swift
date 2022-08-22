@@ -8,11 +8,6 @@
 import Foundation
 
 struct MemeAPIService {
-    struct RequiredParameters {
-        let top: String
-        let bottom: String
-        let meme: String
-    }
     
     func createURLQuery(parameters params: RequiredParameters) -> [URLQueryItem] {
         return [
