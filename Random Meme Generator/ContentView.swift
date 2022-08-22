@@ -12,39 +12,42 @@ struct ContentView: View {
     @State var currentImageID: String = ""
     
     var body: some View {
-        VStack {
-            MemeTemplatePicker(currentImageID: $currentImageID,
-                               imageIDs: memeFetcher.imageIDs,
-                               reloadAction: memeFetcher.fetchImageIDs
-                               , isLoading: memeFetcher.isLoading)
-            
+        ScrollView {
             VStack {
-                if let image = memeFetcher.baseImage {
-                    if !memeFetcher.isLoading {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                MemeTemplatePicker(currentImageID: $currentImageID,
+                                   imageIDs: memeFetcher.imageIDs,
+                                   reloadAction: memeFetcher.fetchImageIDs
+                                   , isLoading: memeFetcher.isLoading)
+                
+                VStack {
+                    if let image = memeFetcher.baseImage {
+                        if !memeFetcher.isLoading {
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    } else {
+                        ProgressView()
                     }
-                } else {
-                    ProgressView()
                 }
+                    .frame(height: 400)
+                
+                Button("Generate meme") {
+                    print("Generating...")
+                }
+                    .padding(10)
+                    .foregroundColor(.orange)
+                    .border(.orange)
             }
-                .frame(height: 400)
-            
-            Button("Generate meme") {
-                print("Generating...")
+                .padding()
+            .onChange(of: memeFetcher.imageIDs) { newValue in
+                currentImageID = newValue[0]
             }
-            .padding()
-            .foregroundColor(.orange)
-            .border(.orange)
+            .onChange(of: currentImageID) { newValue in
+                memeFetcher.fetchBaseImage(imageID: newValue)
+            }
         }
-            .padding()
-        .onChange(of: memeFetcher.imageIDs) { newValue in
-            currentImageID = newValue[0]
-        }
-        .onChange(of: currentImageID) { newValue in
-            memeFetcher.fetchBaseImage(imageID: newValue)
-        }
+        
     }
 }
 
