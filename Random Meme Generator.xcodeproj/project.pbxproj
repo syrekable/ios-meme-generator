@@ -94,6 +94,9 @@
 		F190058F28B3B6C1008778CB /* Random Meme Generator */ = {
 			isa = PBXGroup;
 			children = (
+				F19005BC28B3B7A0008778CB /* model */,
+				F19005BB28B3B77A008778CB /* networking */,
+				F19005BA28B3B76A008778CB /* view */,
 				F190059028B3B6C1008778CB /* Random_Meme_GeneratorApp.swift */,
 				F190059228B3B6C1008778CB /* ContentView.swift */,
 				F190059428B3B6C2008778CB /* Assets.xcassets */,
@@ -125,6 +128,27 @@
 				F19005AD28B3B6C2008778CB /* Random_Meme_GeneratorUITestsLaunchTests.swift */,
 			);
 			path = "Random Meme GeneratorUITests";
+			sourceTree = "<group>";
+		};
+		F19005BA28B3B76A008778CB /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F19005BB28B3B77A008778CB /* networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		F19005BC28B3B7A0008778CB /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
