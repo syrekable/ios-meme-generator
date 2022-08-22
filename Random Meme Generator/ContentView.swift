@@ -65,7 +65,7 @@ struct ContentView: View {
                 Text("That's your meme! Screenshot it or smth")
                 Image(uiImage: memeFetcher.generatedMeme!)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
             }
             .padding()
         }

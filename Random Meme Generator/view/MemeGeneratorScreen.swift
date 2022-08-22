@@ -15,7 +15,7 @@ struct MemeGeneratorScreen: View {
             ZStack {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .scaledToFit()
                 VStack {
                     TextField("Top text", text: $memeEditor.topText)
                     Spacer()
